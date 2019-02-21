@@ -1,0 +1,267 @@
+Eindsymbolen die niet gebruikt worden in de grammatica
+
+   UNKNOWN_TOKEN
+
+
+Grammatica
+
+    0 $accept: root $end
+
+    1 root: command_list
+
+    2 command_list: command_list command
+    3             | /* leeg */
+
+    4 command: name_command
+    5        | date_command
+    6        | word_command
+
+    7 name_command: COMMAND_NAME OPEN_PAR STRING CLOSE_PAR
+
+    8 date_command: COMMAND_DATE OPEN_PAR INTEGER COMMA INTEGER COMMA INTEGER CLOSE_PAR
+
+    9 word_command: COMMAND_WORD OPEN_PAR string_list CLOSE_PAR
+
+   10 string_list: string_list COMMA STRING
+   11            | STRING
+
+
+Eindsymbolen, met de regels waarin ze voorkomen
+
+$end (0) 0
+error (256)
+COMMAND_NAME (258) 7
+COMMAND_DATE (259) 8
+COMMAND_WORD (260) 9
+OPEN_PAR (261) 7 8 9
+CLOSE_PAR (262) 7 8 9
+COMMA (263) 8 10
+STRING (264) 7 10 11
+INTEGER (265) 8
+UNKNOWN_TOKEN (266)
+
+
+Niet-eindsymbolen, met de regels waarin ze voorkomen
+
+$accept (12)
+    links: 0
+root (13)
+    links: 1, rechts: 0
+command_list (14)
+    links: 2 3, rechts: 1 2
+command (15)
+    links: 4 5 6, rechts: 2
+name_command (16)
+    links: 7, rechts: 4
+date_command (17)
+    links: 8, rechts: 5
+word_command (18)
+    links: 9, rechts: 6
+string_list (19)
+    links: 10 11, rechts: 9 10
+
+
+toestand 0
+
+    0 $accept: . root $end
+
+    $standaard  reduceren via regel 3 (command_list)
+
+    root          ga naar toestand 1
+    command_list  ga naar toestand 2
+
+
+toestand 1
+
+    0 $accept: root . $end
+
+    $end  shift, en ga naar toestand 3
+
+
+toestand 2
+
+    1 root: command_list .
+    2 command_list: command_list . command
+
+    COMMAND_NAME  shift, en ga naar toestand 4
+    COMMAND_DATE  shift, en ga naar toestand 5
+    COMMAND_WORD  shift, en ga naar toestand 6
+
+    $standaard  reduceren via regel 1 (root)
+
+    command       ga naar toestand 7
+    name_command  ga naar toestand 8
+    date_command  ga naar toestand 9
+    word_command  ga naar toestand 10
+
+
+toestand 3
+
+    0 $accept: root $end .
+
+    $standaard  accepteer
+
+
+toestand 4
+
+    7 name_command: COMMAND_NAME . OPEN_PAR STRING CLOSE_PAR
+
+    OPEN_PAR  shift, en ga naar toestand 11
+
+
+toestand 5
+
+    8 date_command: COMMAND_DATE . OPEN_PAR INTEGER COMMA INTEGER COMMA INTEGER CLOSE_PAR
+
+    OPEN_PAR  shift, en ga naar toestand 12
+
+
+toestand 6
+
+    9 word_command: COMMAND_WORD . OPEN_PAR string_list CLOSE_PAR
+
+    OPEN_PAR  shift, en ga naar toestand 13
+
+
+toestand 7
+
+    2 command_list: command_list command .
+
+    $standaard  reduceren via regel 2 (command_list)
+
+
+toestand 8
+
+    4 command: name_command .
+
+    $standaard  reduceren via regel 4 (command)
+
+
+toestand 9
+
+    5 command: date_command .
+
+    $standaard  reduceren via regel 5 (command)
+
+
+toestand 10
+
+    6 command: word_command .
+
+    $standaard  reduceren via regel 6 (command)
+
+
+toestand 11
+
+    7 name_command: COMMAND_NAME OPEN_PAR . STRING CLOSE_PAR
+
+    STRING  shift, en ga naar toestand 14
+
+
+toestand 12
+
+    8 date_command: COMMAND_DATE OPEN_PAR . INTEGER COMMA INTEGER COMMA INTEGER CLOSE_PAR
+
+    INTEGER  shift, en ga naar toestand 15
+
+
+toestand 13
+
+    9 word_command: COMMAND_WORD OPEN_PAR . string_list CLOSE_PAR
+
+    STRING  shift, en ga naar toestand 16
+
+    string_list  ga naar toestand 17
+
+
+toestand 14
+
+    7 name_command: COMMAND_NAME OPEN_PAR STRING . CLOSE_PAR
+
+    CLOSE_PAR  shift, en ga naar toestand 18
+
+
+toestand 15
+
+    8 date_command: COMMAND_DATE OPEN_PAR INTEGER . COMMA INTEGER COMMA INTEGER CLOSE_PAR
+
+    COMMA  shift, en ga naar toestand 19
+
+
+toestand 16
+
+   11 string_list: STRING .
+
+    $standaard  reduceren via regel 11 (string_list)
+
+
+toestand 17
+
+    9 word_command: COMMAND_WORD OPEN_PAR string_list . CLOSE_PAR
+   10 string_list: string_list . COMMA STRING
+
+    CLOSE_PAR  shift, en ga naar toestand 20
+    COMMA      shift, en ga naar toestand 21
+
+
+toestand 18
+
+    7 name_command: COMMAND_NAME OPEN_PAR STRING CLOSE_PAR .
+
+    $standaard  reduceren via regel 7 (name_command)
+
+
+toestand 19
+
+    8 date_command: COMMAND_DATE OPEN_PAR INTEGER COMMA . INTEGER COMMA INTEGER CLOSE_PAR
+
+    INTEGER  shift, en ga naar toestand 22
+
+
+toestand 20
+
+    9 word_command: COMMAND_WORD OPEN_PAR string_list CLOSE_PAR .
+
+    $standaard  reduceren via regel 9 (word_command)
+
+
+toestand 21
+
+   10 string_list: string_list COMMA . STRING
+
+    STRING  shift, en ga naar toestand 23
+
+
+toestand 22
+
+    8 date_command: COMMAND_DATE OPEN_PAR INTEGER COMMA INTEGER . COMMA INTEGER CLOSE_PAR
+
+    COMMA  shift, en ga naar toestand 24
+
+
+toestand 23
+
+   10 string_list: string_list COMMA STRING .
+
+    $standaard  reduceren via regel 10 (string_list)
+
+
+toestand 24
+
+    8 date_command: COMMAND_DATE OPEN_PAR INTEGER COMMA INTEGER COMMA . INTEGER CLOSE_PAR
+
+    INTEGER  shift, en ga naar toestand 25
+
+
+toestand 25
+
+    8 date_command: COMMAND_DATE OPEN_PAR INTEGER COMMA INTEGER COMMA INTEGER . CLOSE_PAR
+
+    CLOSE_PAR  shift, en ga naar toestand 26
+
+
+toestand 26
+
+    8 date_command: COMMAND_DATE OPEN_PAR INTEGER COMMA INTEGER COMMA INTEGER CLOSE_PAR .
+
+    $standaard  reduceren via regel 8 (date_command)

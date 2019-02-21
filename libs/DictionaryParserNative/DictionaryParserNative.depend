@@ -1,0 +1,60 @@
+# depslib dependency file v1.0
+1497815184 source:d:\bestanden\data\codes\programeren\c++\projecten\passwordcracker\libs\dictionaryparsernative\main.cpp
+	<lua.h>
+	<lauxlib.h>
+	<lualib.h>
+	<memory>
+	<iostream>
+	"parser.hpp"
+
+1482425480 d:\bestanden\data\codes\programeren\c++\libs\lua\lua-5.3.4\install\include\lua.h
+	<stdarg.h>
+	<stddef.h>
+	"luaconf.h"
+
+1482415730 d:\bestanden\data\codes\programeren\c++\libs\lua\lua-5.3.4\install\include\luaconf.h
+	<limits.h>
+	<stddef.h>
+	<stdint.h>
+	<assert.h>
+
+1481039671 d:\bestanden\data\codes\programeren\c++\libs\lua\lua-5.3.4\install\include\lauxlib.h
+	<stddef.h>
+	<stdio.h>
+	"lua.h"
+
+1484244866 d:\bestanden\data\codes\programeren\c++\libs\lua\lua-5.3.4\install\include\lualib.h
+	"lua.h"
+
+1497814330 d:\bestanden\data\codes\programeren\c++\projecten\passwordcracker\libs\dictionaryparsernative\parser.hpp
+	<cstdio>
+	<cstddef>
+	<string>
+	<vector>
+	<lua.h>
+
+1497814314 source:d:\bestanden\data\codes\programeren\c++\projecten\passwordcracker\libs\dictionaryparsernative\parser.cpp
+	"parser.hpp"
+	"parsedata.hpp"
+	<iostream>
+	<sstream>
+	<cstring>
+
+1497814266 source:d:\bestanden\data\codes\programeren\c++\projecten\passwordcracker\libs\dictionaryparsernative\parser.y
+	"parsedata.hpp"
+	"parser.hpp"
+
+1497814286 d:\bestanden\data\codes\programeren\c++\projecten\passwordcracker\libs\dictionaryparsernative\parsedata.hpp
+	<cstddef>
+	<cstdio>
+	<string>
+	<vector>
+	<cstdint>
+	<lua.h>
+
+1497813294 source:d:\bestanden\data\codes\programeren\c++\projecten\passwordcracker\libs\dictionaryparsernative\lexer.l
+	"parsedata.hpp"
+	"parser.parser.hh"
+
+1497814389 d:\bestanden\data\codes\programeren\c++\projecten\passwordcracker\libs\dictionaryparsernative\parser.parser.hh
+

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="DictionaryParser" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/dictionaryparser" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option parameters="-p test\password.lua -d test\dictionary.lua" />
+				<Option host_application="D:/Bestanden/Data/Codes/Programeren/C++/Projecten/PasswordCracker/bin/Debug/PasswordCracker.exe" />
+				<Option run_host_application_in_terminal="1" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-Wall" />
+					<Add option="-DBUILD_DLL" />
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<Add library="user32" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/dictionaryparser" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option parameters="-p test\password.lua -d test\dictionary.lua -t8" />
+				<Option host_application="D:/Bestanden/Data/Codes/Programeren/C++/Projecten/PasswordCracker/bin/Release/PasswordCracker.exe" />
+				<Option run_host_application_in_terminal="1" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-Wall" />
+					<Add option="-DBUILD_DLL" />
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="user32" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add directory="D:/Bestanden/Data/Codes/Programeren/C++/Libs/lua/lua-5.3.4/install/include" />
+		</Compiler>
+		<Linker>
+			<Add library="lua53.dll" />
+			<Add directory="D:/Bestanden/Data/Codes/Programeren/C++/Libs/lua/lua-5.3.4/install/lib" />
+		</Linker>
+		<Unit filename="lexer.l">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="main.cpp" />
+		<Unit filename="parsedata.hpp" />
+		<Unit filename="parser.cpp" />
+		<Unit filename="parser.hpp" />
+		<Unit filename="parser.y">
+			<Option compile="1" />
+			<Option weight="49" />
+		</Unit>
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
